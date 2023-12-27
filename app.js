@@ -5,7 +5,7 @@ const mongoose=require("mongoose");
 const crypto=require("crypto");
 const path=require("path");
 const ejs=require("ejs");
-const connection=require("./db");
+// const connection=require("./db");
 const GridFsStorage = require('multer-gridfs-storage').GridFsStorage;
 const multer=require("multer");
 const Grid=require("gridfs-stream");
@@ -20,7 +20,20 @@ const passportLocalMongoose=require("passport-local-mongoose");
 // const md5=require("md5");
 // const bcrypt=require("bcrypt");
 // const encryption=require("mongoose-encryption"); 
+const PORT=process.env.PORT || 3000;
 
+mongoose.set("strictQuery", false);
+
+const connectDB = async ()=>{
+    try{
+        const conn=mongoose.connect(process.env.MONGO_URI);
+        console.log(`MONGO DB CONNECTED`);
+    }
+     catch (error){
+        console.log(error);
+        process.exit(1);
+     }
+}
 const saltRounds = 10;
 const app=express();
 app.use(express.static("public"));
@@ -35,7 +48,7 @@ app.use(methodOverride("_method"));
 app.set("view engine","ejs");
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(express.json());
-connection();
+// connection();
 
 // routes define here
 
@@ -831,6 +844,8 @@ app.get("/deleteSpecificComment/:spec",(req,res)=>{
   res.render("education");
  })
 
-app.listen(3000,function(){
-    console.log("Server Started");
+ connectDB().then(()=>{
+  app.listen(PORT, ()=>{
+      console.log(`Listening on PORT ${PORT}`);
+  })
 })
