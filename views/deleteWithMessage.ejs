@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User List</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Additional custom styles */
+    .user-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .user-info .user-description {
+      margin-left: 20px;
+    }
+    .delete-btn {
+      color: red;
+      text-decoration: none;
+    }
+    .delete-btn:hover {
+      text-decoration: underline;
+    }
+    .fixed-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      display: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+    <div class="fixed-top" id="messageDiv">
+        <p><%=message%></p>
+      </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const messageDiv = document.getElementById('messageDiv');
+    messageDiv.style.display = 'block';
+    setTimeout(function() {
+      messageDiv.style.display = 'none';
+    }, 2000);
+
+    // Redirect after 3 minutes
+    setTimeout(function() {
+      window.location.href = '/deletecomments'; // Replace with your desired URL
+    }, 3000); // 3 minutes in milliseconds
+  });
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

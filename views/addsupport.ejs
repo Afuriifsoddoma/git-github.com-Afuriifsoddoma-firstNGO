@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("/img/pexels-madison-inouye-1831234.jpg"); /* Replace with your background image URL */
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 50px;
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    .form-group input[type="file"] {
+      margin-bottom: 20px;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    .top-right-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="form-container">
+          <h2 class="text-center mb-4">Namoota Nu Qarqaaran Post Gochuuf</h2>
+          <form action="/addsupport" method="POST" enctype="multipart/form-data" id="postForm">
+            <div class="form-group">
+              <label for="imageInput">Fakkii Galchuuf</label>
+              <input type="file" class="form-control-file" id="imageInput" name="support">
+            </div>
+            <div class="form-group">
+              <label for="textInput">Maqaa Guutuu</label>
+              <input type="text" class="form-control" id="textInput" placeholder="Maqaa Guutuu" name="maqaa">
+            </div>
+            <div class="form-group">
+                <label for="ibsa">Ibsa Kennuuf</label>
+                <input type="text" class="form-control" id="ibsa" placeholder="Ibsa Kennuf" name="ibsa">
+              </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="POST">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="/adminLinks" class="btn btn-success top-right-button">BACK</a>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const postForm = document.getElementById('postForm');
+    
+    postForm.addEventListener('submit', function(event) {
+      const imageInput = document.getElementById('imageInput');
+      const postTitleInput = document.getElementById('textInput');
+      
+      if (imageInput.value.trim() === '' || postTitleInput.value.trim() === '') {
+        alert('Please fill in all fields.');
+        event.preventDefault(); // Prevents form submission
+      }
+    });
+  });
+  </script>
+</body>
+</html>

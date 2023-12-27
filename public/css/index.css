@@ -1,0 +1,132 @@
+ 
+.banner{
+    min-height: 100vh;
+    width:100%;
+    background-image: url("../img/pexels-following-nyc-12385366.jpg");
+    position: relative;
+    /* background-attachment: fixed; */
+    background-size: cover;
+  
+  }
+  .banner h1{
+    margin-top: 230px;
+    display: inline-block;
+    font-size: 3.5rem;
+    color:#fff;
+    text-shadow: 0 0 2px #000;
+    width:50%;
+    line-height: 4.2rem;
+    font-weight: 100;
+  }
+  .banner h1 span{
+    background-color: #e43a47;
+    display: inline-block;
+    line-height: 3.5rem;
+    padding:0 15px;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+  .banner p{
+    width:50%;
+    text-shadow: 0 0 2px #000;
+    color:#fff;
+    margin-top: 10px;
+  }
+   
+   
+  .c-item{
+       height: 500px;
+  
+  }
+  .c-img{
+      height: 100%;
+      object-fit: cover; 
+  }
+  .all-btn{
+      margin: 5px auto;
+       position: relative;
+       
+  }
+  .carousel-indicators button {
+    background-color: #aeff00; /* Change this to the desired color */
+    color: #e43a47;
+  }
+   
+  .carousel-caption {
+      transition: all 0.5s;
+      opacity: 0;
+      color: #fff;
+    }
+    .carousel{
+      top: 90px;
+    }
+  
+    .carousel-item.active .carousel-caption {
+      opacity: 1;
+    }
+  
+    .carousel-control-prev, .carousel-control-next {
+      transition: all 0.5s;
+      opacity: 0.5;
+      color: #fff;
+    }
+  
+    .carousel-control-prev:hover, .carousel-control-next:hover {
+      opacity: 1;
+    }
+    .carousel-caption {
+      
+      width: 100%; /* Make the caption take full width */
+       /* Ensure it starts from the left edge */
+      text-align: center; /* Center-align the content */
+      padding: 20px;
+      overflow: visible;
+    }
+    .carousel-caption p, .carousel-caption h5 {
+      /* Additional styles for the paragraph inside the caption */
+      margin: 0; /* Reset default margin */
+      white-space:nowrap;
+    }
+     
+  
+    /* nav bar */
+    
+  header{
+    width:100%;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    z-index:2;
+  }
+  header .container{
+    display: flex;
+    justify-content: space-between;
+  }
+  header .container .logo{
+    /* padding:15px 0; */
+    margin-top: 5px;
+    height:70px;
+  }
+  header .container .logo img{
+    height:100%;
+  }
+  header nav ul{
+    list-style-type: none;
+  }
+  header nav ul li{
+    display:inline-block;
+  }
+  header nav ul li a{
+    display: inline-block;
+    height:75px;
+    line-height: 75px;
+    padding: 0 15px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.4s;
+  }
+  header nav ul li a:hover{
+    background-color: #e43a47;
+  }
+   

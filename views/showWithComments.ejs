@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News and Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100;1,300&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+    body {
+      background-image: url("/img/pexels-following-nyc-12385366.jpg");
+       background-size: cover;
+      background-position: center;
+      color: #7DA2A9;
+      padding-bottom: 60px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 100;
+      font-size: 21px;
+      
+    }
+     
+
+    .news-section {
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 5px;
+      width: 100%;
+      background-color: #fff;
+    }
+
+    .news-item {
+      margin-bottom: 20px;
+      padding: 10px;
+      position: relative;
+      width: 100%;
+    }
+    .card-text{
+      color:salmon;
+      font-weight: 200;
+    }
+
+    .news-image {
+      width: 100%;
+      height: auto;
+    }
+
+    .aside-cards {
+      margin-top: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .card {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    li{
+        border: 1px solid rgb(95, 144, 4);
+        background-color: rgb(49, 97, 253);
+    }
+
+    .card-image {
+      width: 100%;
+      height: auto;
+    }
+    .footer {
+      position: static;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #b57909;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    /* Define the animation class */
+.animate-slide {
+  animation: slideIn 3s ease forwards;
+}
+.loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #3498db;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    a{
+        color: #fff;
+        font-weight: 400;
+    }
+    /* Styling for loading animation */
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #e39009;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+    }
+    .navbar-nav .nav-item .nav-link:hover {
+      color: #b0e309; /* Change to your preferred color */
+    }
+
+    /* Styling the button to match nav links */
+    .btn {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 100;
+      font-size: 21px;
+      padding: 5px 15px;
+      margin: 0 10px;
+      color: #fff;
+      background-color: #e39009; /* Change to your preferred color */
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    #commentTextArea{
+      width:100%;
+      padding: 5px 2px;
+      
+    }
+    .button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.button:hover {
+  background-color: #ddd;
+  color: #a8e502;
+  border-color: #076ae2;
+}
+/* Your CSS Styles */
+.comments-section {
+    color:#f0f0f0;
+}
+
+.comment {
+    /* Style for each comment */
+    margin-bottom: 10px;
+    padding: 4px;
+}
+
+.comment-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3px;
+}
+
+.comment-info i {
+    margin-right: 19px;
+}
+
+.comment-name h2 {
+    margin: 0;
+    color: #076ae2;
+    font-weight: 500;
+}
+ 
+
+.comment-content p {
+    margin: 0;
+    color: #eb2828;
+    font-size: 20px;
+    font-weight: 500;
+}
+.custom-icon-color {
+        color: blue; /* Change this to your desired color */
+    }
+.animated-div {
+    animation: moveAnimation 4s infinite; /* Animation properties */
+}
+@keyframes moveAnimation {
+    0% {
+        transform: translateX(0); /* Start position */
+    }
+    50% {
+        transform: translateX(100px); /* Middle position */
+    }
+    100% {
+        transform: translateX(0); /* End position */
+    }
+}
+
+/* Include Font Awesome CSS */
+/* You need to include Font Awesome CSS in your project to use its icons */
+/* Example: */
+/*@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');*/
+
+
+    .btn:hover {
+      background-color: #dc7b08; /* Change to your preferred hover color */
+    }
+    .comment-par{
+        text-align: center;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* Hide the loading screen when the page is fully loaded */
+    body.loaded .loading-screen {
+      display: none;
+    }
+@keyframes slideIn {
+      0% {
+         opacity: 0;
+         transform: scale(0.5);
+      }
+      100% {
+         opacity: 1;
+         transform: scale(1);
+      }
+    }
+
+
+    /* Add your media queries here for smaller screens */
+    @media (max-width: 768px) {
+        body {
+      background-image: url("/img/pexels-following-nyc-12385366.jpg");
+       background-size: cover;
+      background-position: center;
+      color: #7DA2A9;
+      padding-bottom: 60px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      
+    }
+      .aside-cards {
+        position: static;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+        border-radius: 0;
+        box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+      }
+      .footer {
+        font-size: 14px;
+      }
+
+      .news-section {
+        margin-bottom: 0;
+        padding-bottom: 0; /* Adjust this value to prevent content overlap */
+      }
+
+      .aside-cards {
+        max-height: 300px; /* Limit the height of the fixed cards container */
+        
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="loading-screen">
+    <div class="loader"></div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="/img/logo-new.png" id="logo" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/member">Member</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact" class="button">CONTACT</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="news-section">
+        <h2><%=header%></h2>
+        <div class="news-item">
+          <img src="../uploads/<%=docs%>" alt="News 1" class="news-image">
+          <h3><%=header%></h3>
+          <p><%=content%></p>
+          <p class="comment-par">Comments</p>
+       <!-- Comments Section -->
+<div class="comments-section">
+    <% comment.forEach((comm) => { %>
+        <div class="comment">
+            <div class="comment-info animated-div" >
+                <div class="comment-name">
+                    <i class="fas fa-user"></i> <!-- Icon for name -->
+                    <h2><%= comm.name %></h2>
+                </div>
+                <div class="comment-content">
+                    <i class="fas fa-comment"></i> <!-- Icon for comment -->
+                    <p><%= comm.comment %></p>
+                </div>
+            </div>
+        </div>
+        <hr class="comment-divider"> <!-- Horizontal line to separate comments -->
+    <% }) %>
+</div>
+
+          <button type="button" onclick="showCommentTextArea()">Comment</button>
+          <div id="comment" style="display: none; margin-bottom: 20px;">
+            <form action="/postComment/<%=header%>" method="POST">
+            <label for="name" >name:</label>
+            <input type="text" id="name" name="name" style="width: 100%; padding: 3px;">
+            <label for="commentTextArea">Comment:</label>
+            <input id="commentTextArea" name="comment">
+            <button type="submit" >Submit</button>
+          </form>
+          </div>
+          
+          <a href="/news" class="btn btn-primary">BACK</a>
+        </div>
+        <!-- Add more news items as needed -->
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <aside class="aside-cards">
+        <div class="card">
+          <img src="../uploads/<%=arrays[1].imageFilename%>" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title"><%=arrays[1].name%></h5>
+            <p class="card-text"><%=arrays[1].text.substring(0,100)%>...</p>
+             <a href="/shows/<%=arrays[1].imageFilename%>" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="../uploads/<%=arrays[2].imageFilename%>" class="card-img-top" alt="Card Image">
+          <div class="card-body">
+            <h5 class="card-title"><%=arrays[2].name%></h5>
+            <p class="card-text"><%=arrays[2].text.substring(0,100)%>..</p>
+            <a href="/shows/<%=arrays[2].imageFilename%>" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <!-- Add more cards as needed -->
+      </aside>
+    </div>
+  </div>
+</div>
+<div class="footer">
+    &copy; 2023 Your Website. All Rights Reserved.
+  </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+const cardss=document.querySelector(".aside-cards");
+window.addEventListener("load",()=>{
+console.log("windo")
+   setTimeout(function(){
+       document.body.classList.add('loaded');
+   },1500);
+   setTimeout(function(){
+    cardss.style.display="block";
+       cardss.classList.add("animate-slide");
+   },3000);
+
+})
+function showCommentTextArea() {
+  const commentTextArea = document.getElementById('comment');
+  
+  commentTextArea.style.display = 'block';
+   
+}
+
+ 
+  // Perform actions to submit the comment content
+
+
+  // You can add logic here to send the comment to the server or perform other actions
+
+</script>
+</body>
+</html>

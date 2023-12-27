@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NGO Supporters</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    body{
+        margin: 0;
+        padding: 0;
+        background-color: #31c7c9;
+    }
+    .navbar-toggler-icon svg {
+  fill: #ff0000; /* Change to your desired color */
+}
+.navbar-toggler-icon {
+  background-color: #bfff00; /* Change to your desired color */
+}
+.navbar-brand img {
+   width:auto;
+    height:100px;
+     display: inline-block;
+   }
+.navbar{
+   background-color: transparent;
+}
+.navbar-nav .nav-link {
+     background-color: #f5f7f9; 
+     color:#bfff00;
+     /* Adjust background color for navbar links */
+   }
+   #supporters-section {
+  background-image: url('/Gallery/ork.jpg'); /* Replace 'path/to/your/image.jpg' with the path to your image */
+  background-size: cover; /* Adjusts the background image size to cover the entire section */
+  background-position: bottom; /* Centers the background image */
+  color: #fff; /* Set text color to ensure readability */
+}
+
+    .fixed-size-img {
+  width: 200px; /* Set your desired width */
+  height: 300px; /* Set your desired height */
+  object-fit: cover; /* Maintain aspect ratio and cover the entire space */
+}
+/* Background image and styles for the Call-to-Action (CTA) section */
+.cta-section {
+  background-image: url('/Gallery/ork.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: bottom;
+  color: #fff;
+  padding: 50px 0; /* Adjust padding as needed */
+  transition: background-position 0.5s ease; /* Transition effect on hover */
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%);
+}
+
+/* Text styles for better readability */
+.cta-section h2,
+.cta-section p {
+  margin-bottom: 20px;
+}
+
+/* Hover effect to translate background image vertically up */
+.cta-section:hover {
+  background-position: center -10px; /* Adjust the value to change the translation distance */
+  color: hsl(112, 91%, 50%);
+  font-size: 20px;
+}
+/* Add this CSS to your stylesheet */
+
+/* Wrapper for the card to apply hover effect */
+.hover-card {
+  overflow: hidden; /* Hide overflowing content */
+  position: relative; /* Positioning context for absolute positioning */
+}
+
+/* Image inside the card */
+.hover-card img {
+  transition: transform 0.3s ease; /* Transition effect for smoother hover */
+}
+
+/* Hover effect: Translate image to the right */
+.hover-card:hover img {
+  transform: translateX(30px); /* Adjust the value to reach the border */
+}
+/* Add CSS styles for footer grid layout */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Style individual sections */
+ 
+
+/* Style social media icons */
+.social-links li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+
+
+ 
+    /* Custom CSS styles */
+    /* Add your custom styles here */
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="/img/logo-new.png" alt="Logo" class="img-fluid">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link custom-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link custom-link" href="#about"  >About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link custom-link" href="#services"  >Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link custom-link" href="#contact"  >Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section (Optional) -->
+  <section class="jumbotron text-center" id="supporters-section">
+    <h1>NGO Supporters</h1>
+    <p>Highlight the amazing individuals supporting our cause.</p>
+  </section>
+
+  <!-- Supporters Section -->
+  <section class="container">
+    <div class="row">
+      <!-- Individual Supporter Cards (Sample) -->
+      <div class="col-md-4">
+        <div class="card hover-card">
+          <img src="/Gallery/img1.jpg" class="card-img-top fixed-size-img" alt="Supporter 1">
+          <div class="card-body">
+            <h5 class="card-title">Supporter Name</h5>
+            <p class="card-text">Description or role of the supporter.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card hover-card">
+          <img src="/Gallery/img2.jpg" class="card-img-top fixed-size-img" alt="Supporter 1">
+          <div class="card-body">
+            <h5 class="card-title">Supporter Name</h5>
+            <p class="card-text">Description or role of the supporter.</p>
+          </div>
+        </div>
+      </div>
+     <% array.forEach((item)=>{ %>
+        <div class="col-md-4">
+            <div class="card hover-card">
+              <img src="../uploads/support/<%=item.image%>" class="card-img-top fixed-size-img" alt="Supporter 1">
+              <div class="card-body">
+                <h5 class="card-title"><%=item.name%></h5>
+                <p class="card-text"><%=item.ibsa%>.</p>
+              </div>
+            </div>
+          </div>
+    <%  }) %>
+      <!-- Repeat the above card structure for each supporter -->
+    </div>
+  </section>
+
+  <!-- Call-to-Action Section -->
+  <section class="jumbotron text-center mt-4 mb-4 cta-section">
+    <h2>Join Us in Making a Difference!</h2>
+    <p>Support our cause and become a part of our community.</p>
+    <a href="#" class="btn btn-primary">Donate Now</a>
+    <!-- Add more call-to-action buttons or links -->
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Contact Info Section -->
+        <div class="contact-info">
+          <h4>Contact</h4>
+          <ul>
+            <li>Email: example@example.com</li>
+            <li>Phone: +1234567890</li>
+            <!-- Add more contact info -->
+          </ul>
+        </div>
+  
+        <!-- Useful Links Section -->
+        <div class="useful-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <!-- Add more useful links -->
+          </ul>
+        </div>
+  
+        <!-- Social Media Links Section -->
+        <div class="social-media">
+          <h4>Follow Us</h4>
+          <ul class="social-links">
+            <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i>Twitter</a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i>Twitter</a></li>
+            <!-- Add more social media icons/links -->
+          </ul>
+        </div>
+  
+        <!-- Copyright and Developer Info -->
+        <div class="copyright">
+          <span>&copy; 2023 NGO Name. All rights reserved.</span>
+          <span>Developed by Sebaif Muhammed</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

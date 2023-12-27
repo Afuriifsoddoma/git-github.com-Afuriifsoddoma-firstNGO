@@ -1,0 +1,364 @@
+html, body{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-image: url("Gallery/oromia.jpg");
+}
+header{
+    width:100%;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    z-index:2;
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+}
+header .container .logo{
+    /* padding:15px 0; */
+    margin-top: 5px;
+    height:70px;
+}
+header .container .logo img{
+    height:100%;
+}
+header nav ul{
+    list-style-type: none;
+    margin-top: 5px;
+    height: 70px;
+    /* overflow: hidden; */
+}
+header nav ul li{
+    display:inline-block;
+    height:100%;
+}
+header nav ul li a{
+    display: inline-block;
+    height:70px;
+    line-height: 75px;
+    padding: 0 15px;
+    position: relative;
+    right: 200px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.4s;
+}
+.firstSection{
+    height: 100vh;
+}
+header nav ul li a:hover{
+    background-color: #e43a47;
+}
+.image-container{
+    width: 341px;
+    height:489px;
+    /* position: relative; */
+    position: absolute;
+    top:78px;
+    display: inline;
+    overflow: hidden;
+}
+.image-container2{
+    position: absolute;
+    left: 341px;
+    width: 341px;
+    height: 489px;
+    overflow: hidden;
+    top:78px;
+}
+.image-container3{
+    position: absolute;
+    width: 341px;
+    height: 489px;
+    overflow: hidden;
+    left: 682px;
+    top:78px;
+}
+.image-container4{
+    position: absolute;
+    width: 341px;
+    height: 489px;
+    overflow: hidden;
+    left: 1023px;
+    top:78px;
+}
+ .image-container img,
+ .image-container2 img,
+ .image-container3 img,
+ .image-container4 img{
+    position: absolute;
+    /* width: 100%;
+    height: 100%; */
+    /* background-size: contain; */
+    height: 100%;
+    width: 100%;
+    top:0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+.image-container5{
+    width: 100vw;
+    height: 100vh;
+    margin-top: 0px;
+    position: relative;
+    border: 3px solid #e43a47;
+    display: flex;
+}
+.image-container5 img{
+    /* display: inline-block; */
+    flex: 1;
+
+    /* width: 700px;
+    height: 100%; */
+    /* position: absolute;
+    top: 0;
+    left:-100px; */
+    object-fit: cover;
+    margin-left: 0px;
+}
+/* .image-container5 img#firstImg{
+    width: 700px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left:700px;
+    right: -200px; */
+    /* object-fit: contain; */
+    /* margin-left: 0px;
+} */
+img:first-child{
+    opacity: 1;
+}
+@keyframes swapImages{
+    33%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes swapImagess{
+    33%{
+        opacity: 0;
+    }
+    66%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes swapImagesss{
+    66%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+     
+}
+img.swapping{
+    animation: swapImagess 30s infinite;
+}
+img.swapping2{
+    animation: swapImagesss 30s infinite;
+}
+img.swapping1{
+    animation: swapImages 30s infinite;
+}
+
+@media screen and (max-width:790px){
+    .image-container{
+        width: 367px;
+        height:50%;
+        /* position: relative; */
+        position: absolute;
+        top:55px;
+        display: inline;
+        overflow: hidden;
+    }
+    .image-container2{
+        position: absolute;
+        left: 374px;
+        width: 367px;
+        height: 50%;
+        overflow: hidden;
+        top:55px;
+    }
+    .image-container3{
+        position: absolute;
+        width: 367px;
+        height: 50%;
+        overflow: hidden;
+        left: 0px;
+        top:50%;
+    }
+    .image-container4{
+        position: absolute;
+        width: 367px;
+        height: 50%;
+        overflow: hidden;
+        left: 374px;
+        top:50%;
+    }
+    header{
+        width:100%;
+        background-color: rgba(0,0,0,0.6);
+        position: fixed;
+        z-index:2;
+    }
+    header .container{
+        display: flex;
+        justify-content: space-between;
+    }
+    header .container .logo{
+        /* padding:15px 0; */
+        margin-top: 5px;
+        height:50px;
+    }
+    header .container .logo img{
+        height:100%;
+    }
+    header nav ul{
+        list-style-type: none;
+        margin-top: 5px;
+        height: 50px;
+        /* overflow: hidden; */
+    }
+    .image-container img,
+    .image-container2 img,
+    .image-container3 img,
+    .image-container4 img{
+        position: absolute;
+        /* width: 100%;
+        height: 100%; */
+        height: 100%;
+        width: 100%;
+        object-fit:fill;
+        /* width:auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%; */
+        top:0;
+        left: 0;
+        /* opacity: 0; */
+        transition: opacity 2s ease-in-out;
+    }
+    header nav ul li a{
+        display: inline-block;
+        height:70px;
+        line-height: 75px;
+        padding: 0 15px;
+        position: relative;
+        right: 20%;
+        text-decoration: none;
+        text-transform: capitalize;
+        font-size: 16px;
+        color: #fff;
+        transition: 0.4s;
+    }
+     
+    
+}
+@media screen and (max-width:400px){
+    .image-container{
+        width: 209px;
+        height:50%;
+        /* position: relative; */
+        position: absolute;
+        top:55px;
+        display: inline;
+        overflow: hidden;
+    }
+    .image-container2{
+        position: absolute;
+        left: 210px;
+        width: 209px;
+        height: 50%;
+        overflow: hidden;
+        top:55px;
+    }
+    .image-container3{
+        position: absolute;
+        width: 209px;
+        height: 50%;
+        overflow: hidden;
+        left: 0px;
+        top:50%;
+    }
+    .image-container4{
+        position: absolute;
+        width: 209px;
+        height: 50%;
+        overflow: hidden;
+        left: 210px;
+        top:50%;
+    }
+    .image-container img,
+    .image-container2 img,
+    .image-container3 img,
+    .image-container4 img{
+        position: absolute;
+        /* width: 100%;
+        height: 100%; */
+        height: 100%;
+        width: 100%;
+        object-fit:fill;
+        /* width:auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%; */
+        top:0;
+        left: 0;
+        /* opacity: 0; */
+        transition: opacity 2s ease-in-out;
+    }
+    header{
+        width:100%;
+        background-color: rgba(0,0,0,0.6);
+        position: fixed;
+        z-index:2;
+    }
+    header .container{
+        display: flex;
+        justify-content: space-between;
+    }
+    header .container .logo{
+        /* padding:15px 0; */
+        margin-top: 5px;
+        height:50px;
+    }
+    header .container .logo img{
+        height:100%;
+    }
+    header nav ul{
+        list-style-type: none;
+        margin-top: 5px;
+        height: 50px;
+}
+header nav ul li a{
+    display: inline-block;
+    height:70px;
+    line-height: 75px;
+    padding: 0 15px;
+    position: relative;
+    right: 20%;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.4s;
+}
+}

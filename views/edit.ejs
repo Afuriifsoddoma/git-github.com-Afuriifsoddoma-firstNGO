@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Four Posts Example</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS styles */
+
+/* Styles for the top-right button */
+.top-right-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+body{
+  background-color: rgb(249, 104, 104);
+  color: #d0e207;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Post 1 -->
+      <% posts.forEach(function(item){ %>
+      <div class="col-lg-12 mb-4">
+        <div class="card">
+          <img src="../uploads/<%=item.imageFilename%>" class="card-img-top rounded-circle" alt="Profile Image"   style="width: 100px; height: 100px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title"><%=item.name%></h5>
+            <p class="card-text"><%=item.text%></p>
+            <a href="/edit/<%=item.name%>" class="btn btn-primary change-color-link">EDIT POST</a>
+            <a href="/deletepost/<%=item.imageFilename%>" class="btn btn-primary">Delete Post</a>
+            <a href="/picEdit/<%=item.imageFilename%>" class="btn btn-primary change-color-link">Edit Pic</a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+       
+  <a href="/adminLinks" class="btn btn-success top-right-button">BACK</a>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <script>
+     document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('.change-color-link');
+
+      links.forEach(link => {
+        link.addEventListener('click', function(event) {
+          // Prevent default navigation behavior
+          event.preventDefault();
+
+          // Change background color before navigating to another page
+          document.body.style.backgroundColor = '#fff0f0'; // Change to desired color
+
+          // Redirect to the clicked link after a delay (simulating server-side rendering delay)
+          const href = this.getAttribute('href');
+          setTimeout(() => {
+            window.location.href = href;
+          }, 2000); // Change the delay time as needed
+        });
+      });
+    });
+   </script>
+</body>
+</html>
+ 
+
+

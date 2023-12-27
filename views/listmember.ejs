@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+   <style>
+       /* Flexbox for layout */
+.team-members {
+ display: flex;
+ justify-content: space-around;
+ flex-wrap: wrap;
+ max-width: 100vw; /* Adjust as needed */
+ margin-top: 50px;
+}
+
+/* Style for each member */
+.member {
+ text-align: center;
+ margin: 20px;
+ animation: bounceAnimation 5s forwards;
+}
+.member:hover img {
+   transform: scale(1.1) translate(-15px, 5px);
+}
+
+.member img {
+ border-radius: 50%; /* Makes the images circular */
+ width: 300px; /* Adjust the image size */
+ height: 300px; /* Adjust the image size */
+ object-fit: cover; /* Maintain aspect ratio */
+ transition: transform 0.3s ease;
+}
+
+.member-info {
+ margin-top: 10px;
+}
+.member-link {
+        display: inline-block;
+        text-decoration: none;
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #28d106;
+        color: #333;
+        transition: all 0.3s ease;
+        margin: 20px;
+    }
+
+    /* Hover effect */
+    .member-link:hover {
+        background-color: #ca0606;
+        text-decoration: none;
+        color: #f9eded;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+body {
+ margin: 0;
+ font-family: Arial, sans-serif;
+  background-image: url("/img/pexels-madison-inouye-1831234.jpg");
+  background-size: cover;
+ background-position: center;
+ background-attachment: fixed; 
+ /* background-color: #ffffff;   */
+}
+.navbar-toggler-icon svg {
+  fill: #ff0000; /* Change to your desired color */
+}
+.navbar-toggler-icon {
+  background-color: #bfff00; /* Change to your desired color */
+}
+.navbar-brand img {
+   width:auto;
+    height:100px;
+     display: inline-block;
+   }
+.navbar{
+   background-color: transparent;
+}
+.navbar-nav .nav-link {
+     background-color: #f5f7f9; 
+     color:#bfff00;
+     /* Adjust background color for navbar links */
+   }
+   .top-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #3498db;
+       
+    }
+    .btn-anchor{
+        color: #f5d909;
+        background-color: rgba(3, 198, 201, 0.85);
+        font-size: 20px;
+        font-weight: 600;
+    }
+@keyframes bounceAnimation {
+ 0% {
+   transform: translateY(0);
+ }
+ 50% {
+   transform: translateY(-20px); /* Adjust bounce height */
+ }
+ 100% {
+   transform: translateY(0);
+ }
+}
+.custom-link {
+  color: #333; /* Default text color */
+  text-decoration: none; /* Remove underline */
+  transition: color 1s ease-in-out; /* Smooth color transition */
+}
+
+/* Link styles on hover */
+.custom-link:hover {
+  color: #ff6600; /* Change text color on hover */
+  text-decoration: underline;
+   /* Add underline on hover */
+  background-color: #00e1ff;
+  /* You can add more style changes like background color, font size, etc. */
+}
+
+
+
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+ .member img {
+   width: 120px;
+   height: 120px;
+ }
+ 
+}
+
+   </style>
+</head>
+<body>
+    
+   <div class="team-members">
+       <div class="member">
+         <img src="/img/Mustowrid-Tamam-Adam-miseensa-koree-boordii.jpg" alt="Member 1">
+         <div class="member-info">
+           <h3>Mustowrid Temam</h3>
+           <p>Board Member</p>
+            
+         </div>
+       </div>
+     
+       <div class="member">
+         <img src="/img/Abdaa-Jamal-Abdaa-itti-aanaa-walitti-qabaa-boordii.jpg" alt="Member 2">
+         <div class="member-info">
+           <h3>Abda Jemal</h3>
+           <p>Deputy Board Director</p>
+            
+         </div>
+       </div>
+       <div class="member">
+           <img src="/img/Arefat-Abubeker-kadir-Ganeral-manager.jpg" alt="Member 2">
+           <div class="member-info">
+             <h3>Arefat Abubeker</h3>
+             <p>Manager</p>
+              
+           </div>
+         </div>
+         <div class="member">
+           <img src="/img/Fadil-sufiyan-Usman-finance-head.jpg" alt="Member 2">
+           <div class="member-info">
+             <h3>Fadil Sufiyan</h3>
+             <p>Finance Head</p>
+           </div>
+         </div>
+         <div class="member">
+           <img src="/img/Dr-Nuraddiin-Amaan.jpg" alt="Member 2">
+           <div class="member-info">
+             <h3>Dr Nuradin Aman</h3>
+             <p>Member</p>
+           </div>
+         </div>
+        <% array.forEach((items)=>{ %>
+            <div class="member">
+                <img src="../uploads/<%=items.image%>" alt="Member 2">
+                <div class="member-info">
+                  <h3><%=items.name%></h3>
+                  <p><%=items.position%></p>
+                  <a href="/deletemember/specific/<%=items.image%>" class="member-link">Delete</a>
+                </div>
+              </div>
+        <% }) %>
+        <div class="top-right">
+          <a class="btn-anchor" href="/adminLinks">BACK</a>
+        </div>
+       <!-- Add similar markup for the other two members -->
+     </div>
+     
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <!-- <script>
+       document.addEventListener("DOMContentLoaded", function() {
+     const imagesDiv = document.querySelector(".member");
+     imagesDiv.classList.add("animated", "bounce"); // Adding Animate.css classes
+   });
+     </script> -->
+     
+</body>
+</html>
+ 

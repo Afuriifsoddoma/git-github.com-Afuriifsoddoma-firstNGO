@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: relative;
+  background-color: #3498db;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  max-width: 100px;
+  max-height: 80px; /* Set a default max height for the logo */
+  height: auto;
+}
+
+h1 {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 1.5em; /* Set a default font size */
+}
+
+/* Responsive logo and text styling for larger screens */
+@media screen and (min-width: 601px) {
+  .logo {
+    left: 20px;
+    transform: translateY(-50%);
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+}
+
+/* Responsive styling for small screens */
+@media screen and (max-width: 600px) {
+  .logo {
+    max-height: 60px; /* Adjust max height for small screens */
+  }
+
+  h1 {
+    font-size: 1.2em; /* Adjust font size for small screens */
+  }
+}
+
+/* Responsive styling for very small screens */
+@media screen and (max-width: 400px) {
+  .logo {
+    max-height: 40px; /* Further adjust max height for very small screens */
+  }
+
+  h1 {
+    font-size: 1em; /* Further adjust font size for very small screens */
+  }
+}
+
+nav {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #ecf0f1;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  position: relative;
+}
+ 
+h1.login {
+  text-align: center;
+  color: #333;
+}
+.logg{
+  margin: 0px auto;
+  padding: 220px;
+}
+
+#loginForm {
+  max-width: 300px;
+  margin: 0px auto; /* Adjust the top margin to move the form down */
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.background-image {
+  background-image: url("/Home/image/picture/doctorPAtient.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+    </style>
+</head>
+<body>
+  <div class="logg">
+    <form id="loginForm" action="/adminLogin" method="POST">
+        <h1 class="login">Login</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Login</button>
+    </form>
+    <p id="errorMessage" style="display: none;"></p>
+</div>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (password === "" || username === "") {
+        document.getElementById("errorMessage").innerText = "Please enter username and password";
+        document.getElementById("errorMessage").style.display = "block";
+    } else {
+        fetch("/adminLogin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Network response was not ok.");
+            }
+        })
+        .then(data => {
+            // Handle different scenarios based on the received JSON data
+            if (data.message === "Authenticated") {
+                console.log("User authenticated");
+                // Redirect to dashboard or perform other actions for authenticated users
+            } else if (data.message === "Update password required") {
+                console.log("Update password required");
+                // Redirect to password update page or display a message
+            } else if (data.message === "Invalid credentials") {
+                document.getElementById("errorMessage").innerText = "Invalid username or password";
+                document.getElementById("errorMessage").style.display = "block";
+            } else {
+                throw new Error("Unknown response from server");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            // Handle network errors or other issues
+        });
+    }
+});
+
+
+</script>
+
+</body>
+</html>

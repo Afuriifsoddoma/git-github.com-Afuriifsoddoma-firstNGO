@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Post Form</title>
+  <style>
+    /* Basic styling for form */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding-top: 60px; /* To accommodate the fixed top navbar */
+      background-color: #4c88c4;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    label,
+    input,
+    select,
+    button {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .form-container {
+      background-color: #fff; /* Container background color */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+    }
+    .btn-anchor {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .btn-anchor:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+    button[type="text"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button[type="submit"] {
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .error-message {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f44336;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      animation: fadeOut 3s ease-in-out forwards;
+    }
+    .other-input {
+      display: none;
+    }
+    .top-right{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+.success {
+      display: block;
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      text-align: center;
+      animation: slide 1.5s ease-in-out forwards;
+    }
+    @keyframes slide {
+      0% {
+        transform: translateY(-50%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#"><img src="/img/logo-new.png" alt="Your Logo" height="70"></a>
+  </nav>
+  <div class="container">
+    <div class="form-container">
+<form action="/addmember" method="post" enctype="multipart/form-data" id="memberForm">
+  <label for="image">Image:</label>
+  <input type="file" id="image" name="image" accept="image/*">
+  
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  
+  <label for="job">Job:</label>
+  <select id="job" name="job">
+    <option value="Manager">Manager</option>
+    <option value="Board Member">Board Member</option>
+    <option value="Member">Member</option>
+    <option value="Deputy Director">Deputy Director</option>
+    <option value="Finance Member">Finance Member</option>
+    <option value="Finance Header">Finance Header</option>
+    <option value="Other">Other</option>
+    <!-- Add more job options as needed -->
+  </select>
+  <div class="other-input">
+    <label for="otherJob">Other Job:</label>
+    <input type="text" id="otherJob" name="otherJob">
+  </div>
+  
+   <button type="submit">ADD</button>
+   <div class="error-message" id="errorMessage"></div>
+</form>
+</div>
+<div class="success" id="success">
+    <p> <%=message%></p>
+  </div>
+</div>
+<div class="top-right">
+  <a class="btn-anchor" href="/adminLinks">BACK</a>
+  <a class="btn-anchor" href="/member">Check</a>
+</div>
+<script>
+  document.getElementById('memberForm').addEventListener('submit', function(event) {
+  const fileInput = document.getElementById('image');
+  const file = fileInput.files[0];
+  const nameInput = document.getElementById('name').value;
+  const jobInput = document.getElementById('job').value;
+  const otherJobInput = document.getElementById('otherJob').value;
+  const errorMessage = document.getElementById('errorMessage');
+
+  if (!file || !nameInput || (!jobInput || jobInput === 'Other') && !otherJobInput) {
+    errorMessage.innerText = 'Please fill in all fields.';
+    errorMessage.style.display = 'block';
+    animateError(errorMessage);
+    event.preventDefault(); // Prevents form submission
+  } else if (file.size === 0) {
+    errorMessage.innerText = 'Please fill in all fields.';
+    errorMessage.style.display = 'block';
+    animateError(errorMessage);
+    event.preventDefault(); // Prevents form submission
+  } else {
+     
+  }
+});
+document.getElementById('job').addEventListener('change', function() {
+  const otherInput = document.querySelector('.other-input');
+  const jobInput = document.getElementById('job').value;
+
+  if (jobInput === 'Other') {
+    otherInput.style.display = 'block';
+  } else {
+    otherInput.style.display = 'none';
+  }
+});
+function animateError(element) {
+  element.style.animation = 'none';
+  setTimeout(() => {
+    element.style.animation = '';
+  }, 10);
+}
+window.addEventListener("load",()=>{
+        setTimeout(function() {
+            document.getElementById('success').style.display = 'none';
+            window.location.href="/addmember";
+          }, 3000);
+     })
+</script>
+</body>
+</html>

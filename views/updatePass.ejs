@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Change Form</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Some additional styles */
+    body {
+      background-color: #0b2dee; /* Set a light background color */
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #0e7f8a; /* Set form container background color */
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333; /* Change heading color */
+    }
+
+    .form-group label {
+      color: #333; /* Change label color */
+    }
+
+    /* Update button color and style */
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 form-container">
+      <h2>Password Change Form</h2>
+      <form id="passwordChangeForm" action="/updatePass/<%=message%>" method="POST">
+        <div class="form-group">
+          <label for="inputEmail">Username</label>
+          <input type="text" class="form-control" id="inputEmail" value="<%=message%>" name="email" readonly disabled>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="inputPassword" name="newPassword"  placeholder="Enter your New password" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your New password" required autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-primary">Change Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Your JavaScript logic -->
+<script>
+  $(document).ready(function() {
+    // Add your logic to handle form submission
+    $('#passwordChangeForm').submit(function(e) {
+      // Get form values
+      var email = $('#inputEmail').val();
+      var password = $('#inputPassword').val();
+      var confirmPassword = $('#confirmPassword').val();
+
+      // Perform validation
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        e.preventDefault();
+        return;
+      }
+
+      // You can perform further actions here like sending the data to the server via AJAX
+      // Example: 
+      // $.ajax({
+      //   type: 'POST',
+      //   url: 'your_server_endpoint',
+      //   data: {
+      //     email: email,
+      //     password: password
+      //   },
+      //   success: function(response) {
+      //     // Handle success response
+      //   },
+      //   error: function(error) {
+      //     // Handle error response
+      //   }
+      // });
+
+      // For this example, let's just log the data
+      console.log('Email:', email);
+      console.log('Password:', password);
+    });
+  });
+</script>
+
+</body>
+</html>

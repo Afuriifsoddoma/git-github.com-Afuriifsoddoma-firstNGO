@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("/img/pexels-madison-inouye-1831234.jpg"); /* Replace with your background image URL */
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 50px;
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    .form-group input[type="file"] {
+      margin-bottom: 20px;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    .success {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: block;
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  animation: slide 1.5s ease-in-out forwards;
+}
+.success p {
+  width: 100%;
+  margin: 0;
+}
+    @keyframes slide {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="form-container">
+          <h2 class="text-center mb-4">Post Gochuuf</h2>
+          <form action="/uploads" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="imageInput">Fakkii Galchuuf</label>
+              <input type="file" class="form-control-file" id="imageInput" name="image">
+            </div>
+            <div class="form-group">
+              <label for="textInput">Mata-Duree</label>
+              <input type="text" class="form-control" id="textInput" placeholder="Enter text" name="postTitle">
+            </div>
+            <div class="form-group">
+              <label for="textArea">Qabiyyee</label>
+              <textarea class="form-control" id="textArea" rows="10" placeholder="Enter text" name="postBody"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="POST">
+            </div>
+            <div class="form-group">
+                <p>Post Duraanii Edit Gochuuf
+                <a href="/editposts" class="btn btn-primary">EDIT</a>
+            </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="success" id="success">
+    <p> <%=message%></p>
+  </div>
+  <script>
+     window.addEventListener("load",()=>{
+        setTimeout(function() {
+            document.getElementById('success').style.display = 'none';
+            window.location.href="/compose";
+          }, 3000);
+     })
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Comment Form</title>
+   <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+   </style>
+<body>
+  <div class="container">
+    <h1>Leave a Comment</h1>
+    <form id="commentForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" required></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevents default form submission
+  // Validation
+  let name = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let comment = document.getElementById('comment').value.trim();
+
+  // Email format validation using regular expression
+  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (name === '' || email === '' || comment === '') {
+    alert('Please fill in all fields.');
+    return;
+  } else if (!emailPattern.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // If all validations pass, proceed with form submission
+  let formData = new FormData(this);
+  for (let [key, value] of formData.entries()) {
+    console.log(key + ': ' + value);
+  }
+  // Replace the console.log with your code to send data to the server
+});
+
+  </script>
+</body>
+</html>
