@@ -228,11 +228,12 @@ app.get("/news",async (req,res)=>{
             .then((array)=>{
               if(array.length > 4){
                 posts=array.slice(-4);
+                res.render("news",{posts:posts});
               }
               else{
                 posts=array;
               }
-              res.render("news",{posts:posts});
+             
             })
             .catch((err)=>{
               res.render("error")
